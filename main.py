@@ -58,6 +58,13 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
 
 
+@app.get("/")
+def root():
+    return {
+        "status": "success",
+        "message": "FinSense FastAPI backend is running 🚀"
+    }
+
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
